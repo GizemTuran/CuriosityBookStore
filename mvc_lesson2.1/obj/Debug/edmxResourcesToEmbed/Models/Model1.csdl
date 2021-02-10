@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CuriosityBookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BooksTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BookName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BookPrice" Type="Double" Nullable="false" />
+    <Property Name="WritersNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserNickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WritersTable">
+    <Key>
+      <PropertyRef Name="WritersNameSurname" />
+      <PropertyRef Name="SignatureDate" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="WritersPhoto" />
+    </Key>
+    <Property Name="WritersNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SignatureDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WritersPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CuriosityBookStoreEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BooksTable" EntityType="Self.BooksTable" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+    <EntitySet Name="WritersTable" EntityType="Self.WritersTable" />
+  </EntityContainer>
+</Schema>

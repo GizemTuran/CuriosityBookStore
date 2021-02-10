@@ -1,0 +1,52 @@
+﻿
+body {
+
+
+}
+
+.container {
+    width: 1010px;
+    padding-left: 0.115%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    /*border-radius:10px;*/
+}
+
+.slide {
+    display: flex;
+    width: 100%;
+    
+}
+
+#prevBtn{
+    position:absolute;
+    top:50%;
+    z-index:10;
+    left:5%;
+    color:white;
+    opacity:0.7;
+    cursor:pointer; /* to hover changes mouse hand */
+}
+
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    right: 5%;
+    color: white;
+    opacity: 0.7;
+    cursor: pointer; /* to hover changes mouse hand */
+}
+
+#prevBtn:hover {
+    opacity:1;
+    font-size:105%;
+    transition:0.5s;
+}
+
+#nextBtn:hover {
+    opacity: 1;
+    font-size: 105%;
+    transition: 0.5s;
+}

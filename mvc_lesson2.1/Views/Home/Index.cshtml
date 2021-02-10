@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/HomepageStyle.css" />
+    <script src="https://kit.fontawesome.com/245fb8d3f5.js" crossorigin="anonymous"></script>
+</head>
+<p>WELCOME </p>
+
+
+@*@if (Session["username"] != null) {
+
+        Session["username"].ToString();
+
+    }*@
+ 
+<body>
+    @Session["username"].ToString();
+    <div class="container">
+        <i class="fas fa-arrow-left" id="prevBtn"></i>
+        <i class="fas fa-arrow-right" id="nextBtn"></i>
+        <div class="slide">
+
+            <img src="~/Content/homepagephotos/homepagephoto4.png" id="last" />
+            <img src="~/Content/homepagephotos/homephoto1.png" />
+            <img src="~/Content/homepagephotos/homepagephoto2.png" />
+            <img src="~/Content/homepagephotos/homepagephoto3.png" />
+            <img src="~/Content/homepagephotos/homepagephoto4.png" />
+            <img src="~/Content/homepagephotos/homephoto1.png" id="first" />
+        </div>
+    </div>
+
+    @*<button id="prevBtn">Previous</button>
+    <button id="nextBtn">Next</button>*@
+
+
+    <script>
+        const slide = document.querySelector('.slide');
+        const images = document.querySelectorAll('.slide img');
+
+        //buttons
+        const prevBtn = document.querySelector('#prevBtn');
+        const nextBtn = document.querySelector('#nextBtn');
+
+        let counter = 1;
+        const size = images[0].clientWidth; //to back to original photo size
+
+        slide.style.transform = 'translateX(' + (-size * counter) + 'px)'; //to go forward among the pictures
+
+        nextBtn.addEventListener('click', () => {
+            if (counter >= images.length - 1) return;
+            slide.style.transition = "transform 0.4s ease-in-out"; //to jumping
+            counter++;
+            slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) return;
+            slide.style.transition = "transform 0.4s ease-in-out";
+            counter--;
+            slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+        });
+
+        slide.addEventListener('transitionend', () => {
+            console.log(images[counter]);
+            if (images[counter].id === 'last') {
+                slide.style.transition = "none"; //to go back first picture without transmission effect
+                counter = images.length - 2;
+                slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            }
+            if (images[counter].id === 'first') {
+                slide.style.transition = "none"; //to go back first picture without transmission effect
+                counter = images.length - counter;
+                slide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            }
+        });
+
+        
+    </script>
+
+</body>

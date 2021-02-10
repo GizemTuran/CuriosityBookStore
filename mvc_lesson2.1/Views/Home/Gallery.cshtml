@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Gallery";
+}
+<head>
+    <link href="~/Content/GalleryStyle.css" rel="stylesheet" />
+
+</head>
+<h2>Gallery</h2>
+
+<div class="gridcontainer">
+    @foreach (var item in Model)
+    {
+        <div class="griditem">
+            <ul>
+                <li><img src="~/Content/books/@item.BookPhoto" style="height:180px" alt="" /></li>
+                <li>@item.BookName</li>
+                <li>@item.BookPrice TL</li>
+            </ul>
+        </div>
+
+    }
+</div>
+<!--<table>
+    <tr>-->
+@*satır*@
+<!--<td>-->@*sütun*@
+<!--razoritem.BookName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            razoritem.BookPrice
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="~/Content/books/razoritem.BookPhoto" style="height:100px" alt="" />
+        </td>
+    </tr>
+
+</table>-->

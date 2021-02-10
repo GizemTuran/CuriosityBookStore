@@ -1,0 +1,17 @@
+﻿.gridcontainer{
+
+    display:inline-grid; /* to display grid shape*/
+    grid-template-columns:auto auto auto auto auto; /* auto expends the rows */
+    padding:10px; /* to create spaces */
+}
+.griditem {
+    text-align: center;
+    padding:20px; /* values represent in an order like top right bottom left */
+}
+ul{
+    list-style-type:none; /* removes bullets from list */
+}
+.griditem li{
+
+    font-size:20px;
+}

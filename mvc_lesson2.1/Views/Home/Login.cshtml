@@ -1,0 +1,39 @@
+﻿@model mvc_lesson2._1.Models.UserTable
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<head>
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+
+    <div class="LOGIN">
+
+        <h2>Login</h2>
+        <ul>
+            <li>
+                <p>Mail</p>
+                @Html.TextBoxFor(s => s.UserMail, new { @class = "form-control", @placeholder = "Mail" })
+            </li>
+            <li class="ps">
+                <p>Password</p>
+                @Html.TextBoxFor(s => s.UserPassword, new { @class = "form-control", @placeholder = "Password" })
+            </li>
+            <br />
+            <input type="submit" name="submit" value="Submit" />
+            @ViewBag.LoginError
+
+        </ul>
+
+        @Html.ActionLink("Forgot Password", "ForgotPassword", "Home", null, new { @class = "flink" })
+        <br />
+        @Html.ActionLink("SignUp", "SignUp", "Home", null, new { @class = "link" })
+    </div>
+
+    }
+</body>

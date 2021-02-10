@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CuriosityBookStoreModelStoreContainer" CdmEntityContainer="CuriosityBookStoreEntities3">
+    <EntitySetMapping Name="BooksTable">
+      <EntityTypeMapping TypeName="CuriosityBookStoreModel.BooksTable">
+        <MappingFragment StoreEntitySet="BooksTable">
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+          <ScalarProperty Name="WritersNameSurname" ColumnName="WritersNameSurname" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BookPhoto" ColumnName="BookPhoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTable">
+      <EntityTypeMapping TypeName="CuriosityBookStoreModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserMail" ColumnName="UserMail" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserNickname" ColumnName="UserNickname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WritersTable">
+      <EntityTypeMapping TypeName="CuriosityBookStoreModel.WritersTable">
+        <MappingFragment StoreEntitySet="WritersTable">
+          <ScalarProperty Name="WritersNameSurname" ColumnName="WritersNameSurname" />
+          <ScalarProperty Name="SignatureDate" ColumnName="SignatureDate" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WritersPhoto" ColumnName="WritersPhoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

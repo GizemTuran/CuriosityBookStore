@@ -1,0 +1,41 @@
+﻿@model mvc_lesson2._1.Models.UserTable
+@{
+    ViewBag.Title = "SignUp";
+    Layout = null;
+}
+<body>
+    <head>
+        <link href="~/Content/SignUpStyle.css" rel="stylesheet" />
+
+    </head>
+</body>
+
+@using (Html.BeginForm("SignUp", "Home", FormMethod.Post)) //controllera bilgi göndermek için
+{
+<div class="SIGNUP">
+    <ul>
+        <h2>SignUp</h2>
+        <li class="name">
+            <p>
+                Nickname:
+            </p>
+            @Html.TextBoxFor(s => s.UserNickname, new { @class = "form-control", @placeholder = "Nickname" })
+        </li>
+        <li class="mail">
+            <p>
+                User Mail:
+            </p>
+            @Html.TextBoxFor(s => s.UserMail, new { @class = "form-control", @placeholder = "User Mail" })
+        </li>
+        <li class="ps">
+            <p>User Password</p>
+            @Html.TextBoxFor(s => s.UserPassword, new { @class = "form-control", @placeholder = "User Password" })
+        </li>
+        <input type="submit" name="submit" value="Submit" />
+        @*buton oluşturmak için*@
+
+    </ul>
+    @Html.ActionLink("Login", "Login", "Home", null, new { @class = "link" })
+</div>
+}
+

@@ -1,0 +1,45 @@
+﻿@model mvc_lesson2._1.Models.BooksTable
+@{
+    ViewBag.Title = "Add New Book";
+}
+
+<h2>AddNewBook</h2>
+@using (Html.BeginForm("AddNewBook", "Home", FormMethod.Post))
+{
+<ul>
+    <li>
+        <p>
+            Book Name:
+        </p>
+
+        @Html.TextBoxFor(a => a.BookName, new { @class = "form-control", @placeholder = "Book Name" })
+    </li>
+    <li>
+        <p>
+            Book Price:
+        </p>
+
+        @Html.TextBoxFor(a => a.BookPrice, new { @class = "form-control", @placeholder = "Book Price" })
+    </li>
+    <li>
+        <p>
+            Books' Writers:
+        </p>
+
+        @Html.TextBoxFor(a => a.WritersNameSurname, new { @class = "form-control", @placeholder = "Books' Writers" })
+    </li>
+    <li>
+        <p>
+            Book Photo:
+        </p>
+
+        @Html.TextBoxFor(a => a.BookPhoto, new { @class = "form-control", @placeholder = "Book Photo" })
+    </li>
+
+    @ViewBag.LoginError
+</ul>
+<input type="submit" name="submit" value="submit" />
+
+}
+
+

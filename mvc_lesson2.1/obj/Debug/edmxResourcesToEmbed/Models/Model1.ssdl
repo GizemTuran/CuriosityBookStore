@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CuriosityBookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BooksTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BookName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="BookPrice" Type="float" Nullable="false" />
+    <Property Name="WritersNameSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookPhoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserNickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CuriosityBookStore.dbo.WritersTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WritersTable">
+    <Key>
+      <PropertyRef Name="WritersNameSurname" />
+      <PropertyRef Name="SignatureDate" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="WritersPhoto" />
+    </Key>
+    <Property Name="WritersNameSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SignatureDate" Type="date" Nullable="false" />
+    <Property Name="Time" Type="time" Precision="0" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WritersPhoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CuriosityBookStoreModelStoreContainer">
+    <EntitySet Name="BooksTable" EntityType="Self.BooksTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WritersTable" EntityType="Self.WritersTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [WritersTable].[WritersNameSurname] AS [WritersNameSurname], 
+    [WritersTable].[SignatureDate] AS [SignatureDate], 
+    [WritersTable].[Time] AS [Time], 
+    [WritersTable].[ID] AS [ID], 
+    [WritersTable].[WritersPhoto] AS [WritersPhoto]
+    FROM [dbo].[WritersTable] AS [WritersTable]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

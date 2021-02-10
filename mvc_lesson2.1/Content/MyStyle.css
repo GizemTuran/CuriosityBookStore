@@ -1,0 +1,55 @@
+﻿
+body {
+    background-color: #ffffff;
+    font-family:'Times New Roman', Times, serif;
+    background-image:url(library.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.LOGIN {
+    border-radius: 25px;
+    /*background-color: #e09b4c;*/
+    background-color: rgba(224,155,76,0.8);
+    /*background-color: rgba(255,250,245,0.7);*/
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    margin-top: 130px;
+    border: 5px solid #945916;
+    /*opacity: 0.8;*/
+}
+
+ul {
+    list-style-type: none;
+   padding-left:15px;
+}
+h2 {
+    font-size:35px;
+}
+li {
+    font-size: 25px;
+}
+input {
+    font-size:25px;
+}
+ul p{
+   
+    display:inline-block;
+}
+.ps {
+
+    padding-right:10px;
+}
+.link {
+
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-decoration: none;
+    
+}
+li:first-child {
+
+    padding-left: 35px;
+}

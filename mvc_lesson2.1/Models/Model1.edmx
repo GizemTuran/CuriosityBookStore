@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CuriosityBookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BooksTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BookPrice" Type="float" Nullable="false" />
+          <Property Name="WritersNameSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookPhoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserNickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CuriosityBookStore.dbo.WritersTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WritersTable">
+          <Key>
+            <PropertyRef Name="WritersNameSurname" />
+            <PropertyRef Name="SignatureDate" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="WritersPhoto" />
+          </Key>
+          <Property Name="WritersNameSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SignatureDate" Type="date" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="0" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WritersPhoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CuriosityBookStoreModelStoreContainer">
+          <EntitySet Name="BooksTable" EntityType="Self.BooksTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WritersTable" EntityType="Self.WritersTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WritersTable].[WritersNameSurname] AS [WritersNameSurname], 
+    [WritersTable].[SignatureDate] AS [SignatureDate], 
+    [WritersTable].[Time] AS [Time], 
+    [WritersTable].[ID] AS [ID], 
+    [WritersTable].[WritersPhoto] AS [WritersPhoto]
+    FROM [dbo].[WritersTable] AS [WritersTable]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CuriosityBookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BooksTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookPrice" Type="Double" Nullable="false" />
+          <Property Name="WritersNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserNickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WritersTable">
+          <Key>
+            <PropertyRef Name="WritersNameSurname" />
+            <PropertyRef Name="SignatureDate" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="WritersPhoto" />
+          </Key>
+          <Property Name="WritersNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SignatureDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WritersPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CuriosityBookStoreEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BooksTable" EntityType="Self.BooksTable" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+          <EntitySet Name="WritersTable" EntityType="Self.WritersTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CuriosityBookStoreModelStoreContainer" CdmEntityContainer="CuriosityBookStoreEntities3">
+          <EntitySetMapping Name="BooksTable">
+            <EntityTypeMapping TypeName="CuriosityBookStoreModel.BooksTable">
+              <MappingFragment StoreEntitySet="BooksTable">
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+                <ScalarProperty Name="WritersNameSurname" ColumnName="WritersNameSurname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BookPhoto" ColumnName="BookPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTable">
+            <EntityTypeMapping TypeName="CuriosityBookStoreModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserMail" ColumnName="UserMail" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserNickname" ColumnName="UserNickname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WritersTable">
+            <EntityTypeMapping TypeName="CuriosityBookStoreModel.WritersTable">
+              <MappingFragment StoreEntitySet="WritersTable">
+                <ScalarProperty Name="WritersNameSurname" ColumnName="WritersNameSurname" />
+                <ScalarProperty Name="SignatureDate" ColumnName="SignatureDate" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WritersPhoto" ColumnName="WritersPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
