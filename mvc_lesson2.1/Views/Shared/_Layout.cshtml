@@ -2,15 +2,79 @@
 <html>
 <head>
     <script src="https://kit.fontawesome.com/245fb8d3f5.js" crossorigin="anonymous"></script>
+   
     <style>
 
         * {
             font-family: 'Segoe UI';
         }
 
-        .container {
+        .containerdiv {
             font-size: 18px;
+            width: 100%;
+            height: 55.6px;
         }
+
+        .user-icon {
+            color: white;
+            cursor: pointer;
+        }
+
+        .mynavbar {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+            align-items: center;
+            height: 55.6px;
+        }
+
+        .mynavbar-size {
+            background-color: #3b3733;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .mynavbar li:visited {
+            text-decoration: none;
+            color: white;
+        }
+
+        .mynavbar li a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .sub-menu {
+            display: none;
+        }
+            /*  .mynavbar li:hover .sub-menu {
+            display: block;
+            position: absolute;
+            background: #3b3733;
+            margin-top: 6px;
+            margin-left: -25px;
+            height: 130px;
+            width: 130px;
+
+        }*/
+
+            .sub-menu.open {
+                display: block;
+                position: absolute;
+                background: #3b3733;
+                margin-top: 6px;
+                margin-left: -25px;
+                height: 130px;
+                width: 130px;
+            }
+            .sub-menu ul {
+                list-style-type: disc;
+            }
+
+            .sub-menu li {
+                padding: 5px;
+            }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
@@ -20,36 +84,36 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Curiosity Bookstore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Gallery", "Gallery", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+
+    <div class="mynavbar-size">
+        <div class="containerdiv">
+            <ul class="mynavbar">
+                <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
+                <li>@Html.ActionLink("Gallery", "Gallery", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @*<li>@Html.ActionLink("Login", "Login", "Home")</li>
                     <li>@Html.ActionLink("Sign Up", "SignUp", "Home")</li>
+                    <li><a href="@Url.Action("ClearUser","Home")">Logout</a></li>*@
+                <li class="user-icon">
+                    <i class="far fa-user"></i>
+                    <div class="sub-menu">
+                        <ul>
+                            <li>User Page</li>
+                            <li>My Cart</li>
+                            <li><a href="@Url.Action("ClearUser","Home")"> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-
-                    @if (Session["username"].ToString() == "admin" && Session["usermail"].ToString() == "admin" && Session["userp"].ToString() == "admin")
+                @*@if (Session["username"].ToString() == "admin" && Session["usermail"].ToString() == "admin" && Session["userp"].ToString() == "admin")
                     {
                         <li>@Html.ActionLink("Add New Book", "AddNewBook", "Home")</li>
-                    }
-
-                </ul>
-
-            </div>
+                    }*@
+            </ul>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -61,5 +125,18 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+    <script>
+
+        const icon = document.querySelector(".user-icon");
+        const userlinks = document.querySelector(".sub-menu");
+
+        icon.addEventListener("click", () => {
+            userlinks.classList.toggle("open");
+            console.log("Hello world!");
+        });
+    </script>
+
 </body>
 </html>

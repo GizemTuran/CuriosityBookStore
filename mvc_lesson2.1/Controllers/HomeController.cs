@@ -11,6 +11,13 @@ namespace mvc_lesson2._1.Controllers
     {
         CuriosityBookStoreEntities3 db = new CuriosityBookStoreEntities3();
 
+        
+        public ActionResult ClearUser()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
+        }
+
         [HttpPost]
         public ActionResult ForgotPassword(UserTable User)
         {
@@ -37,7 +44,7 @@ namespace mvc_lesson2._1.Controllers
         public ActionResult AddNewBook(BooksTable newb)
         {
             var book = db.BooksTable.FirstOrDefault(s => s.BookName == newb.BookName && s.WritersNameSurname == newb.WritersNameSurname);
-            if (book==null)
+            if (book == null)
             {
                 BooksTable book1 = new BooksTable()
                 {
@@ -52,9 +59,9 @@ namespace mvc_lesson2._1.Controllers
             }
             else
             {
-                ViewBag.BookError = "The book which you entered has already exist...";           
+                ViewBag.BookError = "The book which you entered has already exist...";
             }
-           
+
 
             return View();
         }
@@ -67,7 +74,7 @@ namespace mvc_lesson2._1.Controllers
         public ActionResult Login(UserTable model)
         {
             var user2 = db.UserTable.FirstOrDefault(s => s.UserMail == model.UserMail && s.UserPassword == model.UserPassword); //Select yazmaya gerek yok çünkü FirstOrDefault returnler.
-            
+
             if (user2 != null)
             {
                 Session.Add("username", user2.UserNickname);
@@ -85,26 +92,27 @@ namespace mvc_lesson2._1.Controllers
 
         public ActionResult Login()
         {
-     
+
             return View();
         }
 
         [HttpPost] //Butona basılınca çalışır ayrıca bilgiyi parametre olarak alır.
         public ActionResult SignUp(UserTable model)
         {
-            UserTable user1 = new UserTable() {
+            UserTable user1 = new UserTable()
+            {
 
-            UserNickname = model.UserNickname,
-            UserPassword=model.UserPassword,
-            UserMail=model.UserMail
-        };
+                UserNickname = model.UserNickname,
+                UserPassword = model.UserPassword,
+                UserMail = model.UserMail
+            };
             db.UserTable.Add(user1);//database'e bilgi ekleme
             db.SaveChanges();
             Session.Add("username", user1.UserNickname);
             Session.Add("usermail", user1.UserMail);
             Session.Add("userp", user1.UserPassword);
 
-            return RedirectToAction("Index","Home",new {user1});
+            return RedirectToAction("Index", "Home", new { user1 });
         }
         public ActionResult SignUp() //Siteye girince çalışır
         {

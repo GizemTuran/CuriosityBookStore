@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="~/Content/HomepageStyle.css" />
     <script src="https://kit.fontawesome.com/245fb8d3f5.js" crossorigin="anonymous"></script>
 </head>
-<p>WELCOME </p>
 
 
 @*@if (Session["username"] != null) {
@@ -15,7 +14,8 @@
     }*@
  
 <body>
-    @Session["username"].ToString();
+    @*@Session["username"].ToString();*@
+    <p>WELCOME </p>
     <div class="container">
         <i class="fas fa-arrow-left" id="prevBtn"></i>
         <i class="fas fa-arrow-right" id="nextBtn"></i>
@@ -31,7 +31,7 @@
     </div>
 
     @*<button id="prevBtn">Previous</button>
-    <button id="nextBtn">Next</button>*@
+        <button id="nextBtn">Next</button>*@
 
 
     <script>
@@ -76,7 +76,7 @@
             }
         });
 
-        
+
     </script>
 
 </body>
